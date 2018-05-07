@@ -1,0 +1,182 @@
+
+ <!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <meta http-equiv="Content-Language" content="hi" />
+<head>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="E_learning_wrapper">
+	<h1 id="headertxt">To cash deposit into Customer's Account you need:</h1>
+	<form>
+		<div id="container1">
+		<h3>To Deposit Cash into Customer’s Account you need:</h3>
+		<div class="numberlist">
+
+	<ol type="square" >
+		<li><label for="1">
+    		<input type="radio" value="false" name="ques1" id="1" Autocomplete="Off"> <span>Mobile Number and Aadhar Card</span>
+  		</label></li>
+		<li><label for="2">
+    		<input type="radio" value="false" name="ques1" value="false" id="2" Autocomplete="Off"> <span>Mobile Number and PAN Card</span>
+  		</label></li>
+		<li> <label for="3">
+    		<input type="radio" value="true"  name="ques1" id="3" value="false" Autocomplete="Off"> <span>Mobile Number and Amount</span>
+  		</label></li>
+  		<li> <label for="4">
+    		<input type="radio" value="false"  name="ques1" id="4" value="false" Autocomplete="Off"> <span>Only Mobile Number</span>
+  		</label></li>
+		
+	</ol>
+</div>
+	<input type="button" class="button" value="submit" id="submit" onclick="function1();">
+</div>
+<div id="container2">
+	<h3>Who receives the OTP to authenticate the transaction?</h3>
+			<div class="numberlist">
+
+	<ol type="square" >
+		<li><label for="5">
+    		<input type="radio" value="false" name="ques2" id="5"> <span>Retailer</span>
+  		</label></li>
+		<li><label for="6">
+    			<input type="radio" value="true" name="ques2" value="false" id="6" > <span>Customer</span>
+  		</label></li>
+
+		
+	</ol>
+</div>
+<input type="button" class="button" value="submit" id="submit" onclick="function2();"> 
+</div>
+
+<div id="container3">
+	<h3>Customer can check balance by dialling *401#.</h3>
+			<div class="numberlist">
+
+	<ol type="square" >
+		<li><label for="8">
+    		<input type="radio" value="false" name="ques3" id="8"> <span>True</span>
+  		</label></li>
+		<li><label for="9">
+    			<input type="radio" value="true" name="ques3" value="false" id="9" > <span>False</span>
+  		</label></li>
+		
+	</ol>
+</div>
+<input type="button" class="button" value="submit" id="submit" onclick="function3();"> 
+</div>
+
+<div id="success_msg">
+	<h5>Your score is:<p></p>
+	<span id="score"></span>
+	</h5>
+	
+	<input type="button" class="button"  style="background-color: #f20f13" id="retry" value="Retry"> 
+		<input type="button" class="button" id="continue" value="Continue"> 
+
+</div>
+
+
+
+</form>
+<div id="snackbar">Please select atleast one option to continue</div>
+</div>
+</body>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+	function function1(){
+  		var val1= $('input[name=ques1]:checked').val();	
+  		 var usr_alt = document.getElementById("snackbar");
+  		var radio_buttons = $("input[name='ques1']");
+		if( radio_buttons.filter(':checked').length == 0){
+		 usr_alt.className = "show";
+    setTimeout(function(){ usr_alt.className = usr_alt.className.replace("show", ""); }, 3000);
+			return false;
+		}
+  		
+  		else
+  		{
+  		if(val1=='true')
+  		{
+  			x = 34;
+  		}
+  		else
+  		{
+  			x= 0;
+  		}
+ 		$('#container1').hide();
+		$('#container2').show();
+  	    return x; 
+  		}
+ 	}
+	function function2() {
+		 var z;
+   		 var y = function1();
+   		 var val2= $('input[name=ques2]:checked').val(); 
+   		 		 var usr_alt = document.getElementById("snackbar");
+   		 	var radio_buttons2 = $("input[name='ques2']");
+		if( radio_buttons2.filter(':checked').length == 0){
+					 usr_alt.className = "show";
+   		 setTimeout(function(){ usr_alt.className = usr_alt.className.replace("show", ""); }, 3000);
+			return false;
+		}
+		else
+		{
+     	if(val2=='true')
+  		{
+  			x = 33;
+  		}
+  		else
+  		{
+  			x= 0;
+  		}
+  		$('#container1').hide();
+		$('#container2').hide();
+		$('#container3').show();
+  		return  z= x+y;
+  		}
+	}
+	function function3() {
+	
+   		 var z = function2();
+   		 var i;
+   		 var usr_alt = document.getElementById("snackbar");
+   		 var val3= $('input[name=ques3]:checked').val(); 
+   		 	var radio_buttons3 = $("input[name='ques3']");
+		if( radio_buttons3.filter(':checked').length == 0){
+			 usr_alt.className = "show";
+   		 setTimeout(function(){ usr_alt.className = usr_alt.className.replace("show", ""); }, 3000);
+			return false;
+		}
+		else
+		{
+     	if(val3=='true')
+  		{
+  			x = 33;
+  		}
+  		else
+  		{
+  			x= 0;
+  		}
+  		i = x+z;
+  		$('#container1').hide();
+		$('#container2').hide();
+		$('#container3').hide();
+    $('#headertxt').hide();
+		$('#success_msg').show();
+
+  		$('#score').html(i);
+  		}
+	}
+	$('#retry').click(function() {
+    location.reload();
+});
+    $('#continue').click(function() {
+      
+    location.href = "module_2.html"
+});
+
+</script>
+</html>
